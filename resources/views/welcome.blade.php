@@ -237,12 +237,22 @@
     <form id="contact-form" class="contact-form" method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
       <div class="row">
-      <div class="col-sm-12"> <span>Full Name</span>
-          <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}"> <i class="fa fa-user-o"></i>
-            <input name="name" class="form-control" required type="text" value="{{ old('name') }}">
-            @if ($errors->has('name'))
+      <div class="col-sm-6"> <span>First Name</span>
+          <div class="form-group{{ $errors->has('fname') ? ' has-error' : '' }}"> <i class="fa fa-user-o"></i>
+            <input name="fname" class="form-control" required type="text" value="{{ old('fname') }}">
+            @if ($errors->has('fname'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('fname') }}</strong>
+                                    </span>
+                                @endif
+          </div>
+        </div>
+        <div class="col-sm-6"> <span>Last Name</span>
+          <div class="form-group{{ $errors->has('lname') ? ' has-error' : '' }}"> <i class="fa fa-user-o"></i>
+            <input name="lname" class="form-control" required type="text" value="{{ old('lname') }}">
+            @if ($errors->has('lname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lname') }}</strong>
                                     </span>
                                 @endif
           </div>
@@ -257,7 +267,7 @@
                                 @endif
           </div>
         </div>
-        <div class="col-sm-12"> <span>Password</span>
+        <div class="col-sm-6"> <span>Password</span>
           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}"> <i class="fa fa-key"></i>
             <input name="password" class="form-control" required type="password">
             @if ($errors->has('password'))
@@ -267,14 +277,24 @@
                                 @endif
           </div>
         </div>
-        <div class="col-sm-12"> <span>Confirm Password</span>
+        <div class="col-sm-6"> <span>Confirm Password</span>
           <div class="form-group"> <i class="fa fa-key"></i>
             <input name="password_confirmation" class="form-control" required type="password">
            
           </div>
         </div>
-        
+        <div class="col-sm-12"> <span>Phone Number</span>
+          <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}"> <i class="fa fa-phone"></i>
+            <input oninput="validate(this)" maxlength="11" name="phone" class="form-control" required type="number" value="{{ old('phone') }}">
+            @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+          </div>
+        </div>
       </div>
+      
       <!-- / .row -->
       <button type="submit" class="readmore pull-right">Register</button>
     </form>
@@ -302,6 +322,12 @@ document.write(d.getFullYear());
 <script src="assets/jquery/morphext.min.js"></script> 
 <script src="assets/wow/wow.min.js"></script> 
 <script src="js/custom.js"></script>
+<script>
+function validate(object) {
+    if (object.value.length > object.maxLength)
+        object.value = object.value.slice(0, object.maxLength)
+}
+</script>
 </body>
 
 </html>
