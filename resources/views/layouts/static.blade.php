@@ -14,7 +14,8 @@
 
         <!-- date range picker -->
         <link href="/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+        <link href="/assets/plugins/ion-rangeslider/ion.rangeSlider.css" rel="stylesheet" type="text/css">
+        <link href="/assets/plugins/ion-rangeslider/ion.rangeSlider.skinModern.css" rel="stylesheet" type="text/css">
         <!-- App css -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -106,7 +107,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email"></i><span> Support Tickets </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="email-compose.html">Create New Ticket</a></li>
+                                    <li><a href="/tickets/new">Create New Ticket</a></li>
                                     <li><a href="email-inbox.html"> Unresolved Tickets</a></li>
                                     <li><a href="email-read.html"> Resolved Tickets</a></li>
                                 </ul>
@@ -152,10 +153,9 @@
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
-                    <div class="container">
+                    
             @yield('content')
-                      </div> <!-- container -->
-
+                     
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
@@ -213,7 +213,8 @@
         <!-- App js -->
         <script src="/assets/js/jquery.core.js"></script>
         <script src="/assets/js/jquery.app.js"></script>
-
+        <script src="/assets/plugins/ion-rangeslider/ion.rangeSlider.min.js"></script>
+        <script src="/assets/pages/jquery.range-sliders.js"></script>
         <script>
             $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
             $('#reportrange').daterangepicker({

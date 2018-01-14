@@ -16,8 +16,8 @@ class CreateFeedbackThreadsTable extends Migration
         Schema::create('feedback_threads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');
-            $table->integer('rating');
             $table->integer('sid');
+            $table->integer('fid');
             $table->timestamps();
         });
     }
