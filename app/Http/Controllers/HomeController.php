@@ -54,6 +54,20 @@ class HomeController extends Controller
         return redirect('/tickets'); 
     }
     public function tick(){
-        return view('user.ticketlist');
+        $feedback = Feedback::where('uid',Auth::user()->id)->where('status','Unresolved')->get();
+        return view('user.ticketlist',['feedback'=>$feedback]);
+    }
+    public function opentick($id){
+        $feedback = Feedback::find($id);
+        $thread = FeedbackThread::where('fid',$id)->get();
+        return view('user.ticketthread',['feedback'=>$feedback,'thread'=>$thread]);
+    }
+    public function replytick(){
+        $thread = new FeedbackThread();
+        $thread->content = Input::get('content');
+        $thread->sid = Auth::user()->id;
+        $thread->fid = Input::get('fid');
+        $thread->save();
+        return redirect('/tickets');
     }
 }
