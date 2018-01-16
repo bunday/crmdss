@@ -30,3 +30,5 @@ Route::get('/staff/tickets', 'StaffController@tick')->name('staffticket');
 Route::get('/staff/ticket/open/{id}', 'StaffController@opentick');
 Route::post('/ticket/reply', 'StaffController@replytick');
 Route::get('/staff/tickets/resolved', 'StaffController@resolvedtick');
+
+Route::get('/admin/home', 'AdminController@index');

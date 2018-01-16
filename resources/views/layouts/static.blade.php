@@ -124,6 +124,38 @@
                                 </ul>
                             </li>
                             @else
+                            <li>
+                                <a href="/admin/home" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span></a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-arc"></i><span> View Charts </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/admin/category">View Chart Per Feedback Category</a></li>
+                                    <li><a href="/admin/section">View Chart Per Feedback Section</a></li>                                    
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-pages"></i><span> Manage Resources </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/admin/manage/users">Manage Users</a></li>
+                                    <li><a href="/admin/manage/sections">Manage Feedback Sections</a></li>
+                                    <li><a href="/admin/manage/categories">Manage Feedback Categories</a></li>
+                                
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email"></i><span> Support Tickets </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/admin/tickets">View Unresolved Tickets</a></li>
+                                    <li><a href="/admin/tickets/resolved">View Resolved Tickets</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span> Decisions </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="#">View Archived Decisions</a></li>
+                                </ul>
+                            </li>
                             @endif
 
                             
