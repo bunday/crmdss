@@ -73,8 +73,22 @@
                 <li><a class="smoth-scroll" href="#home">Home</a></li>
                 <li><a class="smoth-scroll" href="#aboutus">About Us</a></li>
                 <li><a class="smoth-scroll" href="#contactus">Contact Us</a></li>
+                @guest
                 <li><a class="smoth-scroll" href="#authenticate">Login</a></li>
                 <li><a class="smoth-scroll" href="#authenticate">Register</a></li>
+                @else
+                <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                @endguest
               </ul>
             </div>
             <!-- /.navbar-collapse --> 
@@ -134,7 +148,9 @@
     <p class="text-muted"> Sign In to be Able to Monitor Feedback Tickets You've Created</p>
   <div class="row">
   <div class="col-sm-8">
-    <form id="contact-form" class="contact-form" method="post">
+  @guest
+  <form id="feedback-form" action="/ticket/guestcreate" class="contact-form" method="post">
+      {{csrf_field()}}
       <div class="row">
         <div class="col-sm-6"> <span>Name</span>
           <div class="form-group"> <i class="fa fa-user-o"></i>
@@ -146,35 +162,58 @@
             <input name="email" id="email" class="form-control" required type="email">
           </div>
         </div>
-        <div class="col-sm-6"> <span>Feedback Category</span>
+  @else
+  <form id="feedback-form" action="/ticket/create" class="contact-form" method="post">
+      {{csrf_field()}}
+      <div class="row">
+        <div class="col-sm-12"> <span>Name</span>
+          <div class="form-group"> <i class="fa fa-user-o"></i>
+            <input name="name" id="name" readonly value="{{Auth::user()->fname}} {{Auth::user()->lname}}" class="form-control" required type="text">
+          </div>
+        </div>
+  @endguest
+    
+        <div class="col-sm-4"> <span>Feedback Category</span>
           <div class="form-group"> 
-            <select class="form-control">
-                <option>Complaint</option>
-                <option>Suggestion</option>
-                <option>Comment</option>
-                <option>Enquiry</option>
+            <select name="cid" class="form-control">
+                @foreach($cat as $f)
+                <option value ="{{$f->id}}">{{$f->title}}</option>
+                @endforeach
             </select>
           </div>
         </div>
-        <div class="col-sm-6"> <span>Related Section</span>
+        <div class="col-sm-4"> <span>Related Section</span>
           <div class="form-group"> 
-            <select class="form-control">
-                <option>Delivery</option>
-                <option>Quality Assurance</option>
-                <option>Customer Relation</option>
-                <option>Service Optimization</option>
-                <option>Others</option>
+            <select name="cat" class="form-control">
+                @foreach($fedcat as $f)
+                <option value ="{{$f->id}}">{{$f->title}}</option>
+                @endforeach
             </select>
+          </div>
+        </div>
+        <div class="col-md-4"><span>Rating</span>
+            <input name="rate" type="number" onchange="slider(this)" placeholder="Rating" min="1" required max="10" class="form-control">
+        </div>
+        <div class="col-sm-12">
+            <div class="progress">
+                <div id="slide" class="progress-bar progress-lg  progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                                                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12"> <span>Subject</span>
+          <div class="form-group"> 
+            <input name="title" class="form-control" required type="text">
           </div>
         </div>
         <div class="col-sm-12"> <span>Message</span>
           <div class="form-group"> <i class="fa fa-comments-o"></i>
-            <textarea rows="4" name="message" id="message" class="form-control" required></textarea>
+            <textarea rows="4" name="content" id="message" class="form-control" required></textarea>
           </div>
         </div>
       </div>
       <!-- / .row -->
-      <button type="submit" class="readmore">Send Message</button>
+      <button type="submit" class="readmore">Send Feedback</button>
     </form>
   </div>
   <div class="col-sm-4"> 
@@ -192,6 +231,7 @@
 </div>
 </section>
 <!-- Contact Us End --> 
+@guest
 <section id="authenticate" class="contactus">
   <div class="container">
   <div class="row">
@@ -203,7 +243,7 @@
   <div class="row">
   <div class="col-sm-6">
     <p class="text-info text-center">Sign in into your account</p>
-    <form id="contact-form" class="contact-form" method="POST" action="{{ route('login') }}">
+    <form id="login-form" class="contact-form" method="POST" action="{{ route('login') }}">
     {{ csrf_field() }}
       <div class="row">
         <div class="col-sm-12"> <span>Email</span>
@@ -234,7 +274,7 @@
   </div>
   <div class="col-sm-6">
     <p class="text-info text-center">Create a new Account</p>
-    <form id="contact-form" class="contact-form" method="POST" action="{{ route('register') }}">
+    <form id="signup-form" class="contact-form" method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
       <div class="row">
       <div class="col-sm-6"> <span>First Name</span>
@@ -303,6 +343,7 @@
 </div>
 </div>
 </section>
+@endguest
 <!-- Copy Rights Start -->
 <footer>
   <div class="container">
@@ -326,6 +367,40 @@ document.write(d.getFullYear());
 function validate(object) {
     if (object.value.length > object.maxLength)
         object.value = object.value.slice(0, object.maxLength)
+}
+function slider(object){
+    slide = document.getElementById('slide')
+    if (object.value < 4) {
+        if ( slide.classList.contains('progress-bar-warning') ) { 
+            slide.classList.remove('progress-bar-warning')
+        }
+        if ( slide.classList.contains('progress-bar-success') ) { 
+            slide.classList.remove('progress-bar-success')
+        }
+        slide.classList.add('progress-bar-danger')
+        slide.style.width = object.value+"0%"
+    } else if (object.value > 3 && object.value < 8) {
+        if ( slide.classList.contains('progress-bar-danger') ) { 
+            slide.classList.remove('progress-bar-danger')
+        }
+        if ( slide.classList.contains('progress-bar-success') ) { 
+            slide.classList.remove('progress-bar-success')
+        }
+        slide.classList.add('progress-bar-warning')
+        slide.style.width = object.value+"0%"
+    } else if (object.value > 7) {
+        if ( slide.classList.contains('progress-bar-warning') ) { 
+            slide.classList.remove('progress-bar-warning')
+        }
+        if ( slide.classList.contains('progress-bar-danger') ) { 
+            slide.classList.remove('progress-bar-danger')
+        }
+        slide.classList.add('progress-bar-success')
+        slide.style.width = object.value+"0%"
+    } else {
+        
+    }
+    
 }
 </script>
 </body>

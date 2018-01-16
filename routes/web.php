@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $cat = App\Category::all();
+    $fedcat = App\FeedbackCategory::all();    
+    return view('welcome',['cat'=>$cat,'fedcat'=>$fedcat]);
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

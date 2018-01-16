@@ -292,6 +292,7 @@
                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             });
         </script>
+        
 
     </body>
 
