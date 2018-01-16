@@ -36,6 +36,10 @@ class StaffController extends Controller
         $feedback = Feedback::where('status','Unresolved')->get();
         return view('staff.ticketlist',['feedback'=>$feedback]);
     }
+    public function resolvedtick(){
+        $feedback = Feedback::where('status','Resolved')->get();
+        return view('staff.ticketlist',['feedback'=>$feedback]);
+    }
     public function opentick($id){
         $feedback = Feedback::find($id);
         $thread = FeedbackThread::where('fid',$id)->get();

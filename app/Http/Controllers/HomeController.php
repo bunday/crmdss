@@ -57,6 +57,10 @@ class HomeController extends Controller
         $feedback = Feedback::where('uid',Auth::user()->id)->where('status','Unresolved')->get();
         return view('user.ticketlist',['feedback'=>$feedback]);
     }
+    public function resolvedtick(){
+        $feedback = Feedback::where('uid',Auth::user()->id)->where('status','Resolved')->get();
+        return view('user.ticketlist',['feedback'=>$feedback]);
+    }
     public function opentick($id){
         $feedback = Feedback::find($id);
         $thread = FeedbackThread::where('fid',$id)->get();

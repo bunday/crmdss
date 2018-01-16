@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tickets/new', 'HomeController@newtick')->name('createticket');
 Route::post('/ticket/create', 'HomeController@createtick');
 Route::get('/tickets', 'HomeController@tick')->name('userticket');
+Route::get('/tickets/resolved', 'HomeController@resolvedtick');
 Route::get('/ticket/open/{id}', 'HomeController@opentick');
 Route::post('/ticket/reply', 'HomeController@replytick');
 
@@ -28,3 +29,4 @@ Route::get('/staff/home', 'StaffController@index');
 Route::get('/staff/tickets', 'StaffController@tick')->name('staffticket');
 Route::get('/staff/ticket/open/{id}', 'StaffController@opentick');
 Route::post('/ticket/reply', 'StaffController@replytick');
+Route::get('/staff/tickets/resolved', 'StaffController@resolvedtick');
