@@ -23,3 +23,8 @@ Route::post('/ticket/create', 'HomeController@createtick');
 Route::get('/tickets', 'HomeController@tick')->name('userticket');
 Route::get('/ticket/open/{id}', 'HomeController@opentick');
 Route::post('/ticket/reply', 'HomeController@replytick');
+
+Route::get('/staff/home', 'StaffController@index');
+Route::get('/staff/tickets', 'StaffController@tick')->name('staffticket');
+Route::get('/staff/ticket/open/{id}', 'StaffController@opentick');
+Route::post('/ticket/reply', 'StaffController@replytick');

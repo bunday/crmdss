@@ -28,18 +28,18 @@
                                                         @foreach($thread as $t)
                                                         <div class="media m-b-30 ">
                                                             <div class="media-body">
-                                                                @if($t->sid == Auth::user()->id)
-                                                                <h4 class="pull-right text-primary m-0">You - {{$t->created_at->toTimeString()}}</h4><br>
+                                                                @if($t->sid == $feedback->id)
+                                                                <h4 class="text-primary m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} (Customer) - {{$t->created_at->toTimeString()}}</h4><br>
                                                                 @else
-                                                                <h4 class="text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h4>
+                                                                <h4 class="pull-right text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h4>
                                                                 @endif
                                                                 
                                                             </div>
                                                         </div> <!-- media -->
-                                                        @if($t->sid == Auth::user()->id)
-                                                        <p class="pull-right"><b>{{$t->content}}</b></p>
+                                                        @if($t->sid == $feedback->id)
+                                                        <p><b>{{$t->content}}</b></p>
                                                         @else
-                                                        <p><b>{{$t->content}}</b></p>                                                        
+                                                        <p class="pull-right"><b>{{$t->content}}</b></p>                                                        
                                                         @endif 
                                                         <br>
                                                         @endforeach
@@ -47,13 +47,20 @@
                                                         
                                                     </div>
                                                     <!-- card-box -->
-                                                    @if($feedback->status!="Resolved")
+                                                    @if($feedback->status=="Unresolved")
                                                     <div class="card-box m-t-20">
                                                         <form method="POST" action="/ticket/reply">
                                                         {{csrf_field()}}
                                                         <div class="form-group">
                                                             <textarea required row="5" name="content" class="form-control"></textarea>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <select name="status" class="form-control">
+                                                                <option>Unresolved</option>
+                                                                <option>Resolved</option>
+                                                            </select>
+                                                        </div>
+
                                                         <input type="hidden" name="fid" value="{{$feedback->id}}">
                                                         <div class="btn-toolbar form-group m-b-0">
                                                             <div class="pull-right">
@@ -64,7 +71,7 @@
                                                     </div>
                                                     @else
                                                     <div class="card-box m-t-20">
-                                                    <h3 class="text-info">This ticket has been marked has closed by one of our staffs, If you feel this is an error, open a new tickets and you will be attended to. <h3>
+                                                    <h3 class="text-info">This ticket has been marked has closed by one of our staffs<h3>
                                                     </div>
                                                     @endif
                                                 </div> <!-- end col -->

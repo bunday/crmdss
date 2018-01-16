@@ -108,19 +108,19 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email"></i><span> Support Tickets </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="/tickets/new">Create New Ticket</a></li>
-                                    <li><a href="email-inbox.html"> Unresolved Tickets</a></li>
-                                    <li><a href="email-read.html"> Resolved Tickets</a></li>
+                                    <li><a href="/tickets"> Unresolved Tickets</a></li>
+                                    <li><a href="/tickets/resolved"> Resolved Tickets</a></li>
                                 </ul>
                             </li>
                             @elseif(Auth::user()->category=="STA")
                             <li>
-                                <a href="/home" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span></a>
+                                <a href="/staff/home" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span></a>
                             </li>
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email"></i><span> Support Tickets </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="email-inbox.html"> Unresolved Tickets</a></li>
-                                    <li><a href="email-read.html"> Resolved Tickets</a></li>
+                                    <li><a href="/staff/tickets"> Unresolved Tickets</a></li>
+                                    <li><a href="/staff/tickets/resolved"> Resolved Tickets</a></li>
                                 </ul>
                             </li>
                             @else
