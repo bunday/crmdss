@@ -9,6 +9,7 @@ use App\Category;
 use App\FeedbackCategory;
 use App\Feedback;
 use App\FeedbackThread;
+use Charts;
 
 class AdminController extends Controller
 {
@@ -29,6 +30,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $chart = Charts::create('line', 'highcharts')
+                ->title('My nice chart')
+                ->labels(['First', 'Second', 'Third'])
+                ->values([5,10,20])
+                ->dimensions(0,500);
+        return view('admin.home',['chart'=>$chart]);
     }
 }

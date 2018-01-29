@@ -63,13 +63,13 @@
                         </div>
                         <!-- end row -->
 
-
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0 m-b-30">Total Revenue</h4>
-
-                                    <div id="website-stats" style="height: 320px;" class="flot-chart"></div>
+                                    {!! $chart->html() !!}
+                                    {!! Charts::scripts() !!}
+                                    {!! $chart->script() !!}
                                 </div>
                             </div>
 
@@ -77,20 +77,7 @@
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0">Sales Analytics</h4>
 
-                                    <div class="pull-right m-b-30">
-                                        <div id="reportrange" class="form-control">
-                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-
-                                    <div id="donut-chart">
-                                        <div id="donut-chart-container" class="flot-chart" style="height: 240px;">
-                                        </div>
-                                    </div>
-
-                                    <p class="text-muted m-b-0 m-t-15 font-13 text-overflow">Pie chart is used to see the proprotion of each data groups, making Flot pie chart is pretty simple, in order to make pie chart you have to incldue jquery.flot.pie.js plugin.</p>
+                                    
                                 </div>
                             </div>
 

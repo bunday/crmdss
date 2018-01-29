@@ -26,6 +26,7 @@
         <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="/assets/plugins/switchery/switchery.min.css">
         <script src="/assets/js/modernizr.min.js"></script>
+         {!! Charts::styles() !!}
    </head>
 
 
@@ -241,7 +242,7 @@
 
         <!-- Dashboard init -->
         <script src="/assets/pages/jquery.dashboard_2.js"></script>
-
+        
         <!-- App js -->
         <script src="/assets/js/jquery.core.js"></script>
         <script src="/assets/js/jquery.app.js"></script>
