@@ -22,7 +22,7 @@
                                     <i class="mdi mdi-chart-areaspline widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Feedbacks">Feedbacks</p>
-                                        <h2><span data-plugin="counterup">34578</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$f}}</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                        
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                     <i class="mdi mdi-layers widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Feedback Sections">Feedback Sections</p>
-                                        <h2><span data-plugin="counterup">52410 </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$s}} </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <i class="mdi mdi-access-point-network widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Feedback Categories">Feedback Categories</p>
-                                        <h2><span data-plugin="counterup">6352</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$c}}</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                     <i class="mdi mdi-account-convert widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Users">Users</p>
-                                        <h2><span data-plugin="counterup">895 </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$u}} </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                     </div>
                                 </div>
                             </div><!-- end col -->
@@ -66,7 +66,6 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="card-box">
-                                    <h4 class="header-title m-t-0 m-b-30">Total Revenue</h4>
                                     {!! $chart->html() !!}
                                     {!! Charts::scripts() !!}
                                     {!! $chart->script() !!}
@@ -75,7 +74,9 @@
 
                             <div class="col-lg-6">
                                 <div class="card-box">
-                                    <h4 class="header-title m-t-0">Sales Analytics</h4>
+                                    {!! $schart->html() !!}
+                                    {!! Charts::scripts() !!}
+                                    {!! $schart->script() !!}
 
                                     
                                 </div>

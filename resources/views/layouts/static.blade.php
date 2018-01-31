@@ -243,6 +243,7 @@
         <!-- Dashboard init -->
         <script src="/assets/pages/jquery.dashboard_2.js"></script>
         
+
         <!-- App js -->
         <script src="/assets/js/jquery.core.js"></script>
         <script src="/assets/js/jquery.app.js"></script>
