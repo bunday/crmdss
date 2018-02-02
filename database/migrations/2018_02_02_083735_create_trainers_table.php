@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDecisionsTable extends Migration
+class CreateTrainersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDecisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('decisions', function (Blueprint $table) {
+        Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('situation');
-            $table->string('remark');
+            $table->json('rates');
+            $table->string('label');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDecisionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('decisions');
+        Schema::dropIfExists('trainers');
     }
 }

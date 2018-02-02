@@ -25,8 +25,8 @@
                                         
                                     </form>
                                     </div>
-                                    <br>
-                            
+                                    
+                            <div class="clearfix"></div>
 						</div>
 
                         
@@ -59,8 +59,6 @@
 
                         <!-- end row -->
 </div>
-                  
-@endsection
 <script>
 function callback(obj) {
     var params = obj.options[obj.selectedIndex].value;
@@ -68,4 +66,5 @@ function callback(obj) {
     window.location="/admin/category"+params;
 }
 
-</script>
+</script>               
+@endsection
