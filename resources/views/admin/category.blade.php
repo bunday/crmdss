@@ -32,7 +32,7 @@
                         
                         <div class="row">
 
-                            <div class="col-lg-6 col-xs-12">
+                            <div class="col-lg-12 col-xs-12">
                         
                                 <div class="card-box">
                                     <center>
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         
-                            <div class="col-lg-6 col-xs-12">
+                            <div class="col-lg-12 col-xs-12">
                         
                                 <div class="card-box">
                                 <center>

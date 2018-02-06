@@ -46,7 +46,7 @@
                                                             </td>
                                                             @else
                                                             <td class="hidden-xs">
-                                                                <a href="/staff/ticket/open/{{$f->id}}" class="email-msg">{{$f->title}}}</a>
+                                                                <a href="/staff/ticket/open/{{$f->id}}" class="email-msg">{{$f->title}}</a>
                                                             </td>
                                                             @endif
                                                             <td class="text-right">

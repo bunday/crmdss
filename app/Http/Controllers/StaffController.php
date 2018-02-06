@@ -29,7 +29,10 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return view('staff.home');
+        $unres = Feedback::where('status','Unresolved')->count();
+        $res = Feedback::where('status','Resolved')->count();
+        $all = Feedback::count();
+        return view('staff.home',['unres'=>$unres,'res'=>$res,'all'=>$all]);
     }
     
     public function tick(){

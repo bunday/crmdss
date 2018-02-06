@@ -28,15 +28,15 @@
                                                         @foreach($thread as $t)
                                                         <div class="media m-b-30 ">
                                                             <div class="media-body">
-                                                                @if($t->sid == $feedback->id)
-                                                                <h4 class="text-primary m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} (Customer) - {{$t->created_at->toTimeString()}}</h4><br>
+                                                                @if($t->sid == $feedback->uid)
+                                                                <h5 class="text-primary m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} (Customer) - {{$t->created_at->toTimeString()}}</h5><br>
                                                                 @else
-                                                                <h4 class="pull-right text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h4>
+                                                                <h5 class="pull-right text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h5>
                                                                 @endif
                                                                 
                                                             </div>
                                                         </div> <!-- media -->
-                                                        @if($t->sid == $feedback->id)
+                                                        @if($t->sid == $feedback->uid)
                                                         <p><b>{{$t->content}}</b></p>
                                                         @else
                                                         <p class="pull-right"><b>{{$t->content}}</b></p>                                                        

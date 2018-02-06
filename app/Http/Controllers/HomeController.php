@@ -29,7 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $unres = Feedback::where('status','Unresolved')->where('uid',Auth::user()->id)->count();
+        $res = Feedback::where('status','Resolved')->where('uid',Auth::user()->id)->count();
+        $all = Feedback::where('uid',Auth::user()->id)->count();
+        return view('user.home',['unres'=>$unres,'res'=>$res,'all'=>$all]);
     }
     public function newtick()
     {

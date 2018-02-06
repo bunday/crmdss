@@ -19,24 +19,24 @@
 
                            
 
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="card-box widget-box-two widget-two-warning">
                                     <i class="mdi mdi-layers widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Pending Tickets">Pending Tickets</p>
-                                        <h2><span data-plugin="counterup">5</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$unres}}</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         
                                     </div>
                                 </div>
                             </div><!-- end col -->
 
                            
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="card-box widget-box-two widget-two-success">
                                     <i class="mdi mdi-account-convert widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Solved Tickets">Solved Tickets</p>
-                                        <h2><span data-plugin="counterup">3 </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$res}} </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                     <i class="mdi mdi-chart-areaspline widget-two-icon"></i>
                                     <div class="wigdet-two-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="All Tickets">All Tickets</p>
-                                        <h2><span data-plugin="counterup">8</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <h2><span data-plugin="counterup">{{$all}}</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         
                                     </div>
                                 </div>

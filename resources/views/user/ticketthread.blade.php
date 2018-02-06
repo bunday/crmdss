@@ -29,9 +29,9 @@
                                                         <div class="media m-b-30 ">
                                                             <div class="media-body">
                                                                 @if($t->sid == Auth::user()->id)
-                                                                <h4 class="pull-right text-primary m-0">You - {{$t->created_at->toTimeString()}}</h4><br>
+                                                                <h5 class="pull-right text-primary m-0">You - {{$t->created_at->toTimeString()}}</h5><br>
                                                                 @else
-                                                                <h4 class="text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h4>
+                                                                <h5 class="text-warning m-0">{{App\User::find($t->sid)->fname}} {{App\User::find($t->sid)->lname}} - {{$t->created_at->toTimeString()}}</h5>
                                                                 @endif
                                                                 
                                                             </div>
@@ -64,7 +64,7 @@
                                                     </div>
                                                     @else
                                                     <div class="card-box m-t-20">
-                                                    <h3 class="text-info">This ticket has been marked has closed by one of our staffs, If you feel this is an error, open a new tickets and you will be attended to. <h3>
+                                                    <h3 class="text-info">This ticket has been marked has closed by one of our staffs, If you feel this is an error, open a new ticket and you will be attended to. <h3>
                                                     </div>
                                                     @endif
                                                 </div> <!-- end col -->

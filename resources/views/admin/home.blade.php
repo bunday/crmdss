@@ -94,12 +94,18 @@
 
                                     <div class="inbox-widget slimscroll-alt" style="min-height: 302px;">
                                         <a href="#">
+                                            @foreach($feds as $f)
                                             <div class="inbox-item">
-                                                <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg" class="img-circle" alt=""></div>
-                                                <p class="inbox-item-author">Chadengle</p>
-                                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                                <p class="inbox-item-date">13:40 PM</p>
+                                                <div class="inbox-item-img">
+                                                    <span class="avatar-sm-box bg-warning">
+                                                        {{substr(App\User::find($f->uid)->fname,0,1)}} 
+                                                    </span>
+                                                </div>
+                                                <p class="inbox-item-author">{{App\User::find($f->uid)->fname}}</p>
+                                                <p class="inbox-item-text">{{$f->title}}</p>
+                                                <p class="inbox-item-date">{{$f->created_at }}</p>
                                             </div>
+                                            @endforeach
                                         </a>
                                     </div>
 
@@ -118,24 +124,25 @@
                                                     <th></th>
                                                     <th>User Name</th>
                                                     <th>Phone</th>
-                                                    <th>Location</th>
+                                                    <th>Category</th>
                                                     <th>Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
+                                                @foreach($users as $u)
                                                 <tr>
                                                     <th>
-                                                        <span class="avatar-sm-box bg-primary">C</span>
+                                                        <span class="avatar-sm-box bg-primary">{{substr($u->fname,0,1)}}</span>
                                                     </th>
                                                     <td>
-                                                        <h5 class="m-0">Craig Hause</h5>
-                                                        <p class="m-0 text-muted font-13"><small>Programmer</small></p>
+                                                        <h5 class="m-0">{{$u->fname}} {{$u->lname}}</h5>
                                                     </td>
-                                                    <td>+89 345 6789</td>
-                                                    <td>Canada</td>
-                                                    <td>29/07/2016</td>
+                                                    <td>{{$u->phone}}</td>
+                                                    <td>Customer</td>
+                                                    <td>{{$u->created_at}}</td>
                                                 </tr>
+                                                @endforeach
 
 
                                             </tbody>

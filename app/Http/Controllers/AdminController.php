@@ -37,6 +37,9 @@ class AdminController extends Controller
         $s = FeedbackCategory::get()->count();
         $c = Category::get()->count();
         $u = User::get()->count();
+        $feds = Feedback::latest()->get()->take(5);
+        $users = User::where('category','CUS')->latest()->get()->take(5);
+        //dd($users);
         //$dat = Feedback::groupBy('fcid')->get();
         //dd($dat);
         $cat = json_decode(json_encode(Category::pluck('title','id')), true);
@@ -52,9 +55,9 @@ class AdminController extends Controller
             ->elementLabel("Count")
             ->dimensions(0,500)
             ->groupBy('fcid', null, $set);
-        return view('admin.home',['chart'=>$chart,'schart'=>$schart,'f'=>$f,'s'=>$s,'c'=>$c,'u'=>$u]);
+        return view('admin.home',['chart'=>$chart,'feds'=>$feds,'users'=>$users,'schart'=>$schart,'f'=>$f,'s'=>$s,'c'=>$c,'u'=>$u]);
     }
-    public function category($id = 1)
+    public function category($id = 2)
     {
         
         $f = Feedback::get()->count();
