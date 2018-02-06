@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trainer extends Model
 {
-    protected $casts = [
-        'rates' => 'array'
+    protected $fillable = [
+        'rates','label',
     ];
 }

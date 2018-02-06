@@ -16,6 +16,19 @@ Route::get('/', function () {
     $fedcat = App\FeedbackCategory::all();    
     return view('welcome',['cat'=>$cat,'fedcat'=>$fedcat]);
 });
+
+Route::get('/add', function () {
+    App\Trainer::create([
+        'rates' => '10,6,8,7,4,7,8,9,8,6', // you can easily assign an actual integer array here
+        'label' => 'Outstanding'
+    ]);
+});
+Route::get('/fetch', function () {
+    $t = App\Trainer::latest()->first();
+    $array = explode(',', $t->rates);
+    dd($array);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,3 +47,4 @@ Route::get('/staff/tickets/resolved', 'StaffController@resolvedtick');
 
 Route::get('/admin/home', 'AdminController@index');
 Route::get('/admin/category{id?}', 'AdminController@category');
+Route::get('/admin/manage/category', 'AdminController@managecategory');

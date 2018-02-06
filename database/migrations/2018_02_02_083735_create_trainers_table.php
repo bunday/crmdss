@@ -15,7 +15,7 @@ class CreateTrainersTable extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
-            $table->json('rates');
+            $table->text('rates');
             $table->string('label');
             $table->timestamps();
         });

@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use App\User;
 use App\Category;
+use App\Trainer;
 use App\FeedbackCategory;
 use App\Feedback;
 use App\FeedbackThread;
+use Phpml\Classification\KNearestNeighbors;
 use Charts;
 
 class AdminController extends Controller
@@ -71,7 +73,26 @@ class AdminController extends Controller
             ->elementLabel("Count")
             ->dimensions(0,500)
             ->groupBy('rating');
-        return view('admin.category',['st'=>$st,'chart'=>$chart,'schart'=>$schart]);
+        
+        $rawdata = Feedback::where('fcid',$id)->pluck('rating');
+        $predictor = $this->getPrediction($rawdata);
+        return view('admin.category',['st'=>$st,'id'=>$id,'chart'=>$chart,'schart'=>$schart, 'predictor'=>$predictor]);
+    }
+    public function getPrediction($data){
+        $data = json_decode(json_encode($data), true);
+        $traineddata = Trainer::all();
+        $samplearr;
+        $labelarr;
+        foreach ($traineddata as $key => $value) {
+            $array = explode(',', $value->rates);
+            $samplearr[] = $array;
+            $labelarr[] = $value->label;
+        }
+        //dd($samplearr,$labelarr);
+        $classifier = new KNearestNeighbors();
+        $classifier->train($samplearr, $labelarr);
+        $answer = $classifier->predict($data);
+        return $answer;
     }
     
 }
