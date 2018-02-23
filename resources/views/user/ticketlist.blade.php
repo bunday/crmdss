@@ -30,6 +30,7 @@
                                                             <td class="mail-select">
                                                                 
                                                                 <i class="fa fa-circle m-l-5 text-warning"></i>
+                                                                <a href="#">{{App\User::find($f->uid)->lname}} {{App\User::find($f->uid)->fname}}</a>
                                                             </td>
 
                                                             <td>

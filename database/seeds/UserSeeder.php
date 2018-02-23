@@ -11,6 +11,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->insert([ //,
+                'fname' => "Admin",
+                'lname' => "User",
+                'email' => "admin@admin.com",
+                'phone' => "07061234560",
+                'password' => bcrypt('allowme'),
+                'category' => "ADM",
+            ]);
         $faker = Faker\Factory::create();
 
         $limit = 33;
@@ -24,8 +32,8 @@ class UserSeeder extends Seeder
             }
             
             DB::table('users')->insert([ //,
-                'fname' => $faker->name,
-                'lname' => $faker->name,
+                'fname' => $faker->firstName(),
+                'lname' => $faker->lastName(),
                 'email' => $faker->unique()->email,
                 'phone' => $faker->phoneNumber,
                 'password' => bcrypt('allowme'),

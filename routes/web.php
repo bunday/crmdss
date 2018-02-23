@@ -47,4 +47,14 @@ Route::get('/staff/tickets/resolved', 'StaffController@resolvedtick');
 
 Route::get('/admin/home', 'AdminController@index');
 Route::get('/admin/category{id?}', 'AdminController@category');
-Route::get('/admin/manage/category', 'AdminController@managecategory');
+Route::get('/admin/manage/categories', 'AdminController@managecategory');
+Route::post('/addcat','AdminController@addcat');
+
+Route::post('/updatetrainer','AdminController@updatetrainer');
+
+Route::get('/admin/section{id?}', 'AdminController@section');
+Route::post('/updatesectrainer','AdminController@updatesectrainer');
+Route::get('/admin/manage/sections', 'AdminController@managesection');
+Route::post('/addsec','AdminController@addsec');
+
+Route::get('/admin/manage/users', 'AdminController@manageuser');

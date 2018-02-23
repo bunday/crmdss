@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class SectionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
         $limit = 8;
 
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('categories')->insert([ //,
+            DB::table('feedback_categories')->insert([ //,
                 'title' => $faker->realText($maxNbChars = 12),
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
             ]);
