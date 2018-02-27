@@ -84,6 +84,7 @@
                                                     <form method="POST" action="/updatetrainer">
                                                     {{csrf_field()}}
                                                     <input type="hidden" name="thought" id="thought">
+                                                     <input type="hidden" name="lock" value="{{$id}}">
                                                     <input type="text" required name="decision" placeholder="Correct Decision" class="form-control">
                                                 </div>
                                                 <div class="modal-footer">

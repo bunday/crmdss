@@ -106,8 +106,6 @@ class AdminController extends Controller
         
         }
         $data = array_slice($data,-10);
-        //dd($data);
-        //dd($samplearr,$labelarr);
         $classifier = new KNearestNeighbors();
         $classifier->train($samplearr, $labelarr);
         $answer = $classifier->predict($data);
@@ -115,12 +113,31 @@ class AdminController extends Controller
     }
     //Update Trainer with new Prediction
     public function updatetrainer(Request $r){
+        $this->saveNewTrainedData($r->lock,$r->decision);
         $train = Trainer::where('label',$r->thought)->get();
         foreach ($train as $key => $value) {
             $value->label = $r->decision;
             $value->save();
         }
         return redirect('/admin/category');
+    }
+    //Add A New trained Decision
+    public function saveNewTrainedData($id,$decision){
+        $rawdata =  json_decode(json_encode(Feedback::where('fcid',$id)->pluck('rating')), true);
+        $rawdata = array_slice($rawdata,-10);
+        $data="";
+        for ($i=0; $i <sizeof($rawdata); $i++) { 
+            if ($i<9) {
+                $data.=$rawdata[$i].",";
+            }else{
+                $data.=$rawdata[$i];                
+            }
+        }
+        $t = new Trainer();
+        $t->rates = $data;
+        $t->label = $decision;
+        $t->save();
+        return;
     }
     //View Section
     public function section($id = 1)
@@ -147,6 +164,7 @@ class AdminController extends Controller
     }
     //Update trainer for section
     public function updatesectrainer(Request $r){
+        $this->saveNewTrainedData($r->lock,$r->decision);
         $train = Trainer::where('label',$r->thought)->get();
         foreach ($train as $key => $value) {
             $value->label = $r->decision;
