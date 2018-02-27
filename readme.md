@@ -1,5 +1,7 @@
 #Customer Relationship Decision Support System
 
+A Project done in partial completion of BSc Computer Science, University of Ibadan, Nigeria.
+
 #Prerequisite
 
 Composer
@@ -16,9 +18,17 @@ cd crmdss
 
 composer update 
 
+#Setup
+
 create a database
 
+enter cp .env.example .env
+
 set up your .env file for database access
+
+enter php artisan key:generate
+
+#Firing Up!
 
 run php artisan db:seed to generate data using faker
 
